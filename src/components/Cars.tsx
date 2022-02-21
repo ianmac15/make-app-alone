@@ -12,7 +12,7 @@ const Cars = ({cars, clickCar}: properties) => {
 
 interface properties{
   cars: carType[]
-  clickCar: MouseEventHandler
+  clickCar: React.MouseEventHandler<Element,MouseEvent>
 }
 
 export default Cars

@@ -13,7 +13,7 @@ const Car = ({car, clickCar}:properties) => {
 
 interface properties {
   car:carType
-  clickCar: MouseEventHandler
+  clickCar: React.MouseEventHandler<Element,MouseEvent>
 }
 
 export default Car
