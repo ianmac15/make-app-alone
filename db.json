@@ -1,10 +1,12 @@
 {
   "cars": [
-    {"brand": "Ford",
+    { "id": 1,
+      "brand": "Ford",
       "model": "Focus",
       "isUsed": true
     },
-    {
+    { 
+      "id":2,
       "brand": "Fiat",
       "model": "Punto",
       "isUsed": false

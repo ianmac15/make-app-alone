@@ -1,16 +1,18 @@
+import { MouseEventHandler } from "react"
 import { carType } from "../App"
 import Car from "./Car"
 
-const Cars = ({cars}: properties) => {
+const Cars = ({cars, clickCar}: properties) => {
   return (<>
     {cars.map(
-      (car, index) => (<Car key ={index} car={car} />)
+      (car) => (<Car clickCar={clickCar} key ={car.id} car={car} />)
     )}</>
   )
 }
 
 interface properties{
   cars: carType[]
+  clickCar: MouseEventHandler
 }
 
 export default Cars

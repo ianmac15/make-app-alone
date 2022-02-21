@@ -6,17 +6,29 @@ import Cars from "./components/Cars";
 
 function App() {
 
-  const [cars, setCars] = useState<carType[]>([])
-
-  useEffect(() => {
-    const getCarsFromServer = async () => {
-      const carsFromServer = await fetchCars()
-      setCars(carsFromServer)
+  const [cars, setCars] = useState<carType[]>([
+    { "id": 1,
+      "brand": "Ford",
+      "model": "Focus",
+      "isUsed": true
+    },
+    { 
+      "id":2,
+      "brand": "Fiat",
+      "model": "Punto",
+      "isUsed": false
     }
+  ])
 
-    getCarsFromServer()
-  },[]
-  )
+  // useEffect(() => {
+  //   const getCarsFromServer = async () => {
+  //     const carsFromServer = await fetchCars()
+  //     setCars(carsFromServer)
+  //   }
+
+  //   getCarsFromServer()
+  // },[]
+  // )
 
   const fetchCars = async () => {
     // const res = await fetch('http://localhost:8080/api/car')
@@ -25,18 +37,32 @@ function App() {
     return data
   }
 
+  const fetchCar = async (id:number) => {
+    const res = await fetch(`http://localhost:5000/cars/${id}`)
+    const data = await res.json()
+    return data
+  }
+
+  const clickCar = (id: number) => {
+    // const carToFetch = fetchCar(id)
+    setCars(cars.map((car: carType) => 
+      car.id === id ? {...car, isUsed : !car.isUsed} : car
+    ))
+  }
+
   
 
   return (
     <div className="container">
       <HeaderTitle title="Car App" />
-      <Cars cars={cars} />
+      <Cars clickCar={clickCar} cars={cars} />
 
     </div>
   );
 }
 
 export interface carType {
+  id: number
   brand: string
   model: string
   isUsed: boolean

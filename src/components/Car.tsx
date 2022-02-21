@@ -1,9 +1,10 @@
+import { MouseEvent, MouseEventHandler } from "react"
 import { carType } from "../App"
 
 
-const Car = ({car}:properties) => {
+const Car = ({car, clickCar}:properties) => {
   return (
-    <div className="task">
+    <div onDoubleClick = {() => clickCar(car.id)} className="task"{...car.isUsed ? "reminder" : ""}>
       <h3>{car.brand}</h3>
       <p>{car.model}</p>
     </div>
@@ -12,6 +13,7 @@ const Car = ({car}:properties) => {
 
 interface properties {
   car:carType
+  clickCar: MouseEventHandler
 }
 
 export default Car
