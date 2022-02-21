@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react"
-import { carType } from "../App"
+import { carType, clickCarInterface } from "../App"
 import Car from "./Car"
 
 const Cars = ({cars, clickCar}: properties) => {
@@ -12,7 +12,7 @@ const Cars = ({cars, clickCar}: properties) => {
 
 interface properties{
   cars: carType[]
-  clickCar: React.MouseEventHandler<Element,MouseEvent>
+  clickCar: clickCarInterface
 }
 
 export default Cars

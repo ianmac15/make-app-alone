@@ -52,6 +52,8 @@ function App() {
 
   
 
+  
+
   return (
     <div className="container">
       <HeaderTitle title="Car App" />
@@ -66,6 +68,10 @@ export interface carType {
   brand: string
   model: string
   isUsed: boolean
+}
+
+export interface clickCarInterface {
+    (clickCar: number): void
 }
 
 export default App;
