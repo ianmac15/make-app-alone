@@ -1,11 +1,11 @@
 import { MouseEventHandler } from "react"
-import { carType, clickCarInterface } from "../App"
+import { carType, clickCarInterface, onDeleteInterface } from "../App"
 import Car from "./Car"
 
-const Cars = ({cars, clickCar}: properties) => {
+const Cars = ({cars, clickCar, onDelete}: properties) => {
   return (<>
     {cars.map(
-      (car) => (<Car clickCar={clickCar} key ={car.id} car={car} />)
+      (car) => (<Car clickCar={clickCar} key ={car.id} car={car} onDelete = {onDelete}/>)
     )}</>
   )
 }
@@ -13,6 +13,7 @@ const Cars = ({cars, clickCar}: properties) => {
 interface properties{
   cars: carType[]
   clickCar: clickCarInterface
+  onDelete: onDeleteInterface
 }
 
 export default Cars

@@ -50,6 +50,14 @@ function App() {
     ))
   }
 
+  const deleteCar = (id:number) => {
+    setCars(
+      cars.filter(
+        (car) => car.id !== id
+      )
+    )
+  }
+
   
 
   
@@ -57,7 +65,7 @@ function App() {
   return (
     <div className="container">
       <HeaderTitle title="Car App" />
-      <Cars clickCar={clickCar} cars={cars} />
+      <Cars clickCar={clickCar} cars={cars} onDelete = {deleteCar}/>
 
     </div>
   );
@@ -72,6 +80,10 @@ export interface carType {
 
 export interface clickCarInterface {
     (clickCar: number): void
+}
+
+export interface onDeleteInterface {
+  (deleteCar:number):void
 }
 
 export default App;

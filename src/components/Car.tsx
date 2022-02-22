@@ -1,11 +1,12 @@
 import { MouseEvent, MouseEventHandler } from "react"
-import { carType, clickCarInterface } from "../App"
+import { carType, clickCarInterface, onDeleteInterface } from "../App"
+import {FaTimes} from "react-icons/fa"
 
 
-const Car = ({car, clickCar}:properties) => {
+const Car = ({car, clickCar, onDelete}:properties) => {
   return (
     <div onDoubleClick = {() => clickCar(car.id)} className={`task ${car.isUsed ? "reminder" : ""}`}>
-      <h3>{car.brand}</h3>
+      <h3>{car.brand}  <FaTimes style={{"color":"red","cursor":"pointer"}} onClick ={() => onDelete(car.id)} /></h3>
       <p>{car.model}</p>
     </div>
   )
@@ -15,6 +16,7 @@ const Car = ({car, clickCar}:properties) => {
 interface properties {
   car:carType
   clickCar: clickCarInterface
+  onDelete:onDeleteInterface
 }
 
 
