@@ -3,8 +3,11 @@ import Tasks from "./components/Cars";
 import Button from "./components/Button";
 import { useEffect, useState } from "react";
 import Cars from "./components/Cars";
+import AddForm from "./components/AddForm";
 
 function App() {
+
+  const[isAddFormVisible, setAddFormVisible] = useState(false)
 
   const [cars, setCars] = useState<carType[]>([
     { "id": 1,
@@ -59,7 +62,7 @@ function App() {
   }
 
   const showAddForm = () => {
-
+    setAddFormVisible(!isAddFormVisible)
   }
   
 
@@ -68,7 +71,7 @@ function App() {
   return (
     <div className="container">
       <HeaderTitle title="Car App" onClick={showAddForm}/>
-      < />
+      {isAddFormVisible && <AddForm/>}
       <Cars clickCar={clickCar} cars={cars} onDelete = {deleteCar}/>
 
     </div>
@@ -83,15 +86,15 @@ export interface carType {
 }
 
 export interface clickCarInterface {
-    (clickCar: number): void
+    (id: number): void
 }
 
 export interface onDeleteInterface {
-  (deleteCar:number):void
+  (id:number):void
 }
 
 export interface showAddFormInterface {
-  (showAddForm:React.MouseEvent<HTMLButtonElement>):React.MouseEventHandler<HTMLButtonElement>
+  (param:React.MouseEvent<HTMLButtonElement>):void
 }
 
 export default App;
