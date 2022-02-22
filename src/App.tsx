@@ -58,13 +58,17 @@ function App() {
     )
   }
 
+  const showAddForm = () => {
+
+  }
   
 
   
 
   return (
     <div className="container">
-      <HeaderTitle title="Car App" />
+      <HeaderTitle title="Car App" onClick={showAddForm}/>
+      < />
       <Cars clickCar={clickCar} cars={cars} onDelete = {deleteCar}/>
 
     </div>
@@ -84,6 +88,10 @@ export interface clickCarInterface {
 
 export interface onDeleteInterface {
   (deleteCar:number):void
+}
+
+export interface showAddFormInterface {
+  (showAddForm:React.MouseEvent<HTMLButtonElement>):React.MouseEventHandler<HTMLButtonElement>
 }
 
 export default App;
