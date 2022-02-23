@@ -64,6 +64,11 @@ function App() {
   const showAddForm = () => {
     setAddFormVisible(!isAddFormVisible)
   }
+
+  const addCar = (newCar: carType) => {
+    
+    setCars([...cars, newCar])
+  }
   
 
   
@@ -71,7 +76,7 @@ function App() {
   return (
     <div className="container">
       <HeaderTitle title="Car App" onClick={showAddForm}/>
-      {isAddFormVisible && <AddForm/>}
+      {isAddFormVisible ? <AddForm onAdd = {addCar}/> : null}
       <Cars clickCar={clickCar} cars={cars} onDelete = {deleteCar}/>
 
     </div>
@@ -95,6 +100,10 @@ export interface onDeleteInterface {
 
 export interface showAddFormInterface {
   (param:React.MouseEvent<HTMLButtonElement>):void
+}
+
+export interface onAddInterface {
+  (param:carType):void
 }
 
 export default App;
