@@ -1,16 +1,22 @@
 {
   "cars": [
     {
-      "brand": "Mazda ",
-      "model": "2",
-      "isUsed": false,
-      "id": 1
-    },
-    {
       "brand": "Nissan",
       "model": "GTR",
       "isUsed": false,
       "id": 2
+    },
+    {
+      "brand": "Mitsubishi",
+      "model": "Evo",
+      "isUsed": false,
+      "id": 3
+    },
+    {
+      "brand": "Mazda",
+      "model": "Rx7",
+      "isUsed": true,
+      "id": 4
     }
   ]
 }

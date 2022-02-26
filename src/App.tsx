@@ -7,19 +7,7 @@ function App() {
 
   const[isAddFormVisible, setAddFormVisible] = useState(false)
 
-  const [cars, setCars] = useState<carType[]>([
-    { "id": 1,
-      "brand": "Ford",
-      "model": "Focus",
-      "isUsed": true
-    },
-    { 
-      "id":2,
-      "brand": "Fiat",
-      "model": "Punto",
-      "isUsed": false
-    }
-  ])
+  const [cars, setCars] = useState<carType[]>([])
 
   useEffect(() => {
     const getCarsFromServer = async () => {
@@ -44,8 +32,16 @@ function App() {
     return data
   }
 
-  const clickCar = (id: number) => {
-    // const carToFetch = fetchCar(id)
+  const clickCar = async (id: number) => {
+    const carToFetch = await fetchCar(id)
+    const updCar: carNoId = {...carToFetch, isUsed:!carToFetch.isUsed}
+
+    const res = await fetch(`http://localhost:5000/cars/${id}`,
+      {method: "PUT",
+      headers: {'Content-type': 'application/json'},
+      body: JSON.stringify(updCar)}
+    )
+
     setCars(cars.map((car: carType) => 
       car.id === id ? {...car, isUsed : !car.isUsed} : car
     ))
@@ -81,8 +77,7 @@ function App() {
     setCars([...cars, data])
   }
   
-
-  
+  // "server": "json-server --watch db.json --port 5000"
 
   return (
     <div className="container">
