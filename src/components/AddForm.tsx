@@ -22,8 +22,8 @@ const onSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     return
   }
 
-  const newID = Math.floor(Math.random()*10000)+1
-  const newCar = {id:newID, brand:newBrand, model:newModel, isUsed: newIsUsed};
+  // const newID = Math.floor(Math.random()*10000)+1
+  const newCar = {brand:newBrand, model:newModel, isUsed: newIsUsed};
  
   onAdd(newCar)
 

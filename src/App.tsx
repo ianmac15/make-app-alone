@@ -1,6 +1,4 @@
 import HeaderTitle from "./components/HeaderTitle";
-import Tasks from "./components/Cars";
-import Button from "./components/Button";
 import { useEffect, useState } from "react";
 import Cars from "./components/Cars";
 import AddForm from "./components/AddForm";
@@ -23,15 +21,15 @@ function App() {
     }
   ])
 
-  // useEffect(() => {
-  //   const getCarsFromServer = async () => {
-  //     const carsFromServer = await fetchCars()
-  //     setCars(carsFromServer)
-  //   }
+  useEffect(() => {
+    const getCarsFromServer = async () => {
+      const carsFromServer = await fetchCars()
+      setCars(carsFromServer)
+    }
 
-  //   getCarsFromServer()
-  // },[]
-  // )
+    getCarsFromServer()
+  },[]
+  )
 
   const fetchCars = async () => {
     // const res = await fetch('http://localhost:8080/api/car')
@@ -53,7 +51,10 @@ function App() {
     ))
   }
 
-  const deleteCar = (id:number) => {
+  const deleteCar = async (id:number) => {
+
+    await fetch(`http://localhost:5000/cars/${id}`, {method:"DELETE"})
+
     setCars(
       cars.filter(
         (car) => car.id !== id
@@ -65,9 +66,19 @@ function App() {
     setAddFormVisible(!isAddFormVisible)
   }
 
-  const addCar = (newCar: carType) => {
+  const addCar = async (newCar: carNoId) => {
+
+    const res = await fetch(`http://localhost:5000/cars`, 
+    {method:"POST",
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(newCar)
+    })
+
+    const data = await res.json()
     
-    setCars([...cars, newCar])
+    setCars([...cars, data])
   }
   
 
@@ -103,7 +114,13 @@ export interface showAddFormInterface {
 }
 
 export interface onAddInterface {
-  (param:carType):void
+  (param:carNoId):void
+}
+
+export interface carNoId {
+  brand: string
+  model: string
+  isUsed: boolean
 }
 
 export default App;
