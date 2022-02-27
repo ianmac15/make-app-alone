@@ -1,4 +1,3 @@
-import { MouseEventHandler } from "react"
 import { carType, clickCarInterface, onDeleteInterface } from "../App"
 import Car from "./Car"
 

@@ -3,13 +3,13 @@
     {
       "brand": "Nissan",
       "model": "GTR",
-      "isUsed": false,
+      "isUsed": true,
       "id": 2
     },
     {
       "brand": "Mitsubishi",
       "model": "Evo",
-      "isUsed": false,
+      "isUsed": true,
       "id": 3
     },
     {

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { carType } from '../App'
 import { onAddInterface } from '../App'
 
 const AddForm = ({onAdd}:properties) => {

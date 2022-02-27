@@ -1,4 +1,3 @@
-import { MouseEvent, MouseEventHandler } from "react"
 import { carType, clickCarInterface, onDeleteInterface } from "../App"
 import {FaTimes} from "react-icons/fa"
 

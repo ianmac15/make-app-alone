@@ -21,35 +21,38 @@ function App() {
 
   const fetchCars = async () => {
     // const res = await fetch('http://localhost:8080/api/car')
-    const res = await fetch('http://localhost:5000/cars')
+    const res = await fetch('http://localhost:7000/cars')
     const data = await res.json()
     return data
   }
 
   const fetchCar = async (id:number) => {
-    const res = await fetch(`http://localhost:5000/cars/${id}`)
+    const res = await fetch(`http://localhost:7000/cars/${id}`)
     const data = await res.json()
     return data
   }
 
   const clickCar = async (id: number) => {
     const carToFetch = await fetchCar(id)
-    const updCar: carNoId = {...carToFetch, isUsed:!carToFetch.isUsed}
+    const updCar: carType = {...carToFetch, isUsed:!carToFetch.isUsed}
 
-    const res = await fetch(`http://localhost:5000/cars/${id}`,
-      {method: "PUT",
+    const res = await fetch(`http://localhost:7000/cars/${id}`,
+      {
+      method: "PUT",
       headers: {'Content-type': 'application/json'},
       body: JSON.stringify(updCar)}
     )
 
+    const data = await res.json()
+
     setCars(cars.map((car: carType) => 
-      car.id === id ? {...car, isUsed : !car.isUsed} : car
+      car.id === id ? {...car, isUsed : data.isUsed} : car
     ))
   }
 
   const deleteCar = async (id:number) => {
 
-    await fetch(`http://localhost:5000/cars/${id}`, {method:"DELETE"})
+    await fetch(`http://localhost:7000/cars/${id}`, {method:"DELETE"})
 
     setCars(
       cars.filter(
@@ -62,9 +65,9 @@ function App() {
     setAddFormVisible(!isAddFormVisible)
   }
 
-  const addCar = async (newCar: carNoId) => {
+  const addCar = async (newCar: newCarInterface) => {
 
-    const res = await fetch(`http://localhost:5000/cars`, 
+    const res = await fetch(`http://localhost:7000/cars`, 
     {method:"POST",
     headers: {
       'Content-type': 'application/json'
@@ -109,10 +112,10 @@ export interface showAddFormInterface {
 }
 
 export interface onAddInterface {
-  (param:carNoId):void
+  (param:newCarInterface):void
 }
 
-export interface carNoId {
+export interface newCarInterface {
   brand: string
   model: string
   isUsed: boolean

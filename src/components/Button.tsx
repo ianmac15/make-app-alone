@@ -1,4 +1,3 @@
-import React from 'react'
 import { showAddFormInterface } from '../App'
 
 const Button = ({text, onClick}:buttonProps) => {
