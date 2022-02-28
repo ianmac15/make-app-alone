@@ -86,7 +86,7 @@ function App() {
     <div className="container">
       <HeaderTitle title="Car App" onClick={showAddForm}/>
       {isAddFormVisible ? <AddForm onAdd = {addCar}/> : null}
-      <Cars clickCar={clickCar} cars={cars} onDelete = {deleteCar}/>
+      {cars.length > 0 ? (<Cars clickCar={clickCar} cars={cars} onDelete = {deleteCar}/>) : ('No cars available')}
 
     </div>
   );
