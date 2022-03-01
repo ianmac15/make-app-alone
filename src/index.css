@@ -114,6 +114,12 @@ footer {
 .wrench {
   cursor: pointer;
   color: rgb(0, 132, 255);
-  position: relative;
-  left: 335px;
+  align-items: baseline;
+
+}
+
+.task p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

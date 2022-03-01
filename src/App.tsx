@@ -10,6 +10,7 @@ import About from "./components/About";
 function App() {
 
   const [isAddFormVisible, setAddFormVisible] = useState(false)
+  const [isEditFormVisible, setEditFormVisible] = useState(false)
 
   const [cars, setCars] = useState<carType[]>([])
 
@@ -85,6 +86,15 @@ function App() {
 
     setCars([...cars, data])
   }
+
+
+  const showEditForm = () => {
+    setEditFormVisible(!isEditFormVisible)
+
+  }
+
+  
+
 
   // "server": "json-server --watch db.json --port 5000"
 

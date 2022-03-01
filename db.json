@@ -9,7 +9,7 @@
     {
       "brand": "Mazda",
       "model": "Rx7",
-      "isUsed": true,
+      "isUsed": false,
       "id": 4
     }
   ]
