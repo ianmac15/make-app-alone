@@ -1,13 +1,17 @@
-import React from 'react'
+import { useLocation } from 'react-router'
 import { showAddFormInterface } from '../App'
 import Button from './Button'
 
 const HeaderTitle = ({ title, onClick}: properties) => {
+
+    const location = useLocation()
+
     return (
         <div>
             <header className='header'>
                 <h1 >{title}</h1>
-                <Button text='Add' onClick ={onClick}/>
+                {location.pathname=== '/' && 
+                (<Button text='Add' onClick ={onClick}/>)}
             </header>
 
         </div>

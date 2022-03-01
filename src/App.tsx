@@ -1,6 +1,6 @@
 import HeaderTitle from "./components/HeaderTitle";
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Cars from "./components/Cars";
 import AddForm from "./components/AddForm";
 import Footer from "./components/Footer";
@@ -92,9 +92,13 @@ function App() {
     <Router>
       <div className="container">
         <HeaderTitle title="Car App" onClick={showAddForm} />
-        {isAddFormVisible ? <AddForm onAdd={addCar} /> : null}
-        {cars.length > 0 ? (<Cars clickCar={clickCar} cars={cars} onDelete={deleteCar} />) : ('No cars available')}
-
+        <Routes>
+          <Route path='/' element={<>
+            {isAddFormVisible ? <AddForm onAdd={addCar} /> : null}
+            {cars.length > 0 ? (<Cars clickCar={clickCar} cars={cars} onDelete={deleteCar} />) : ('No cars available')}
+          </>} />
+          <Route path="/about" element={<About />} />
+        </Routes>
         <Footer />
       </div>
     </Router>

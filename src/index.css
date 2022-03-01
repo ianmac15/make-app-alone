@@ -58,7 +58,7 @@ body {
   background: #f4f4f4;
   margin: 5px;
   padding: 10px 20px;
-  cursor: pointer;
+  
 }
 
 .task.reminder {
@@ -109,4 +109,11 @@ body {
 footer {
   margin-top: 30px;
   text-align: center;
+}
+
+.wrench {
+  cursor: pointer;
+  color: rgb(0, 132, 255);
+  position: relative;
+  left: 335px;
 }
