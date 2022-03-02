@@ -10,7 +10,8 @@ import About from "./components/About";
 function App() {
 
   const [isAddFormVisible, setAddFormVisible] = useState(false)
-  const [isEditFormVisible, setEditFormVisible] = useState(false)
+  
+
 
   const [cars, setCars] = useState<carType[]>([])
 
@@ -85,16 +86,43 @@ function App() {
     const data = await res.json()
 
     setCars([...cars, data])
+
+    setAddFormVisible(!isAddFormVisible)
   }
 
 
-  const showEditForm = () => {
-    setEditFormVisible(!isEditFormVisible)
+
+
+  const editCar = async (id: number, updBrand: string, updModel: string) => {
+
+    const carToEdit = await fetchCar(id)
+    const updCar: carType = { ...carToEdit, brand: updBrand, model: updModel }
+
+    const res = await fetch(`http://localhost:7000/cars/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(updCar)
+      }
+    )
+
+    const data = await res.json()
+
+
+    setCars(
+      cars.map(
+        (car) => car.id === id ? { ...car, brand: data.brand, model: data.model } : car
+      )
+    )
 
   }
 
-  
 
+
+
+ 
 
   // "server": "json-server --watch db.json --port 5000"
 
@@ -105,7 +133,7 @@ function App() {
         <Routes>
           <Route path='/' element={<>
             {isAddFormVisible ? <AddForm onAdd={addCar} /> : null}
-            {cars.length > 0 ? (<Cars clickCar={clickCar} cars={cars} onDelete={deleteCar} />) : ('No cars available')}
+            {cars.length > 0 ? (<Cars updCar={editCar} clickCar={clickCar} cars={cars} onDelete={deleteCar} />) : ('No cars available')}
           </>} />
           <Route path="/about" element={<About />} />
         </Routes>
@@ -142,6 +170,10 @@ export interface newCarInterface {
   brand: string
   model: string
   isUsed: boolean
+}
+
+export interface clickWrenchInterface {
+  (param: void): void
 }
 
 export default App;

@@ -1,16 +1,16 @@
 {
   "cars": [
     {
-      "brand": "Nissan",
-      "model": "GTR",
-      "isUsed": false,
-      "id": 2
+      "brand": "Mitsubishi",
+      "model": "Lancer Evo",
+      "isUsed": true,
+      "id": 1
     },
     {
-      "brand": "Mazda",
-      "model": "Rx7",
-      "isUsed": false,
-      "id": 4
+      "brand": "Nissan",
+      "model": "GTR",
+      "isUsed": true,
+      "id": 2
     }
   ]
 }
