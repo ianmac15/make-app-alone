@@ -58,7 +58,6 @@ body {
   background: #f4f4f4;
   margin: 5px;
   padding: 10px 20px;
-  
 }
 
 .task.reminder {
@@ -116,6 +115,15 @@ footer {
   color: rgb(0, 132, 255);
   align-items: baseline;
 
+}
+
+.bulb {
+  cursor: pointer;
+  color: rgb(0, 255, 0);
+}
+
+.bulb-off {
+  color:rgb(0, 0, 0)
 }
 
 .task p {

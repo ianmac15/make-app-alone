@@ -1,7 +1,8 @@
 import { useState } from "react"
+import { clickWrenchInterface } from "../App"
 import Button from "./Button"
 
-const EditForm = ({onUpd,id}: properties) => {
+const EditForm = ({onUpd,id, onClickWrench}: properties) => {
 
     const [updBrand, setupdBrand] = useState("")
     const [updModel, setupdModel] = useState("")
@@ -24,6 +25,7 @@ const EditForm = ({onUpd,id}: properties) => {
         setupdBrand('')
         setupdModel('')
         
+        onClickWrench()
 
     }
 
@@ -41,6 +43,7 @@ const EditForm = ({onUpd,id}: properties) => {
 interface properties {
     onUpd:updInterface
     id:number
+    onClickWrench: clickWrenchInterface
 }
 
 export interface updInterface {
